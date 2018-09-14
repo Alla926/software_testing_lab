@@ -55,4 +55,6 @@ public class StudentServiceImplTest {
         System.out.println(average);
         Assert.assertEquals(average, 7.0, 8.0);
     }
+
+	//commit1 - branch master
 }
