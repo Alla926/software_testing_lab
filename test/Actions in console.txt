@@ -1,25 +1,26 @@
 git init
 git remote add origin https://github.com/Alla926/software_testing_lab.git
+
 git add .
 git commit Add_gitignore
 git push origin master
+
 git add .
 git commit -m Add_git_folder
 git push origin master
+
 git add .
 git commit -m Commit1_master
-git push origin master
 git add .
 git commit -m Commit2_master
-git push origin master
 git add .
 git commit -m Commit3_master
 git push origin master
 git checkout -b develop
 git status
+
 git add .
 git commit -m Commit1_develop
-git push origin master
 git add .
 git commit -m Commit2_develop
 git push origin master
