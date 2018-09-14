@@ -8,4 +8,12 @@ git commit -m Add_git_folder
 git push origin master
 git add .
 git commit -m Commit1_master
+git push origin master
+git add .
+git commit -m Commit2_master
+git push origin master
+git add .
+git commit -m Commit3_master
+git push origin master
+git checkout -b develop
 
