@@ -16,4 +16,10 @@ git add .
 git commit -m Commit3_master
 git push origin master
 git checkout -b develop
-
+git status
+git add .
+git commit -m Commit1_develop
+git push origin master
+git add .
+git commit -m Commit2_develop
+git push origin master
