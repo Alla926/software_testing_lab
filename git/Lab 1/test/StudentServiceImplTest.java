@@ -67,16 +67,22 @@ public class StudentServiceImplTest {
     //master changes
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 7bc2d8b... Commit1
+=======
+>>>>>>> develop
 	
 	
 	//commit1 - branch develop
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 7bc2d8b... Commit1
 =======
 >>>>>>> 7bc2d8b... Commit1
+=======
+>>>>>>> develop
 	
 }

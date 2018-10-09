@@ -28,3 +28,29 @@ git push origin master
 
 git checkout master
 git merge develop
+git push origin master
+
+git add .
+git commit -m Master_changes
+
+git add .
+git commit -m Develop_changes
+ 
+git checkout master
+git merge develop //conflict
+
+git add .
+git commit Conflict_solving
+git merge
+
+git add .
+git commit -m Commit1
+git add .
+git commit -m Commit2
+git push origin develop
+
+
+git checkout master
+git cherry-pick 7bc2d8b
+
+git revert c66565b
