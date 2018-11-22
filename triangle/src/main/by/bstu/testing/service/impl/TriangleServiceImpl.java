@@ -16,5 +16,6 @@ public class TriangleServiceImpl implements TriangleService {
         return sideA < (sideB + sideC) && sideB < (sideA + sideC) && sideC < (sideA + sideB);
 
     }
+
 }
 
