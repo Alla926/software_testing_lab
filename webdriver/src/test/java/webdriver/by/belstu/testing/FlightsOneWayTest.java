@@ -27,13 +27,13 @@ public class FlightsOneWayTest {
 	public void BrowserToGoogle() {
 		driver.get("https://wizzair.com/ru-ru");
 		WebElement from = driver.findElement(By.xpath("//*[@id=\"search-departure-station\"]"));
-		from.sendKeys("Вильнюс");
-		WebElement fromAcception = driver.findElement(By.xpath("//*[@id=\"flight-search\"]/div/div/div[3]/form/div[1]/fieldset/div[3]/div/div[3]/div[1]/label/strong"));
-		fromAcception.submit();
+		from.clear();
+		from.sendKeys("Вильнюс\n");
+
 		WebElement to = driver.findElement(By.xpath("//*[@id=\"search-arrival-station\"]"));
-		to.sendKeys("Барселона");
-		WebElement toAcception = driver.findElement(By.xpath("//*[@id=\\\"flight-search\\\"]/div/div/div[3]/form/div[1]/fieldset/div[3]/div/div[3]/div[1]/label/strong/mark"));
-		toAcception.submit();
+		to.clear();
+		to.sendKeys("Барселона\n");
+		
 		WebElement search = driver.findElement(By.xpath("//*[@id=\"flight-search\"]/div/div/div[3]/form/div[4]/button"));
 		search.submit();
 		System.out.println("Page title is: " + driver.getTitle());
