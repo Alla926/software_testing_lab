@@ -1,13 +1,10 @@
 package webdriver.by.belstu.testing;
 
-import java.util.Properties;
-
-import org.junit.Assert;
 
 //4) Найти авиарейсы из одного пункта в другой с выбором пункта "в одну сторону" 
 //по указанной дате
 //Ожидаемый результат: отображается список рейсов в одну сторону в указанный день
-
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class FlightsOneWayTest {
 
 	@Test
-	public void BrowserToGoogle() {
+	public void flightsList() {
 		System.setProperty("webdriver.chrome.driver", "src/resources/driver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		WebDriverWait wait = new WebDriverWait(driver, 15);
