@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="intellij-patcher-agent-0.19">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/intellij-patcher-agent-0.19.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/lombok-plugin-0.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
