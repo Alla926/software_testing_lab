@@ -25,12 +25,19 @@ public class FlightsOneWayTest {
 
 		WebElement from = driver.findElement(By.id("search-departure-station"));
 		from.clear();
-		from.sendKeys("Вильнюс\n");
+		from.sendKeys("Вильнюс");
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//label[@data-test='flight-search-panel-location-label']")));
+		driver.findElement(By.xpath("//label[@data-test='flight-search-panel-location-label']")).click();
 
 		WebElement to = driver.findElement(By.id("search-arrival-station"));
 		to.clear();
-		to.sendKeys("Барселона\n");
+		to.sendKeys("Барселона");
+		wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//label[@data-test='flight-search-panel-location-label']")));
+		driver.findElement(By.xpath("//label[@data-test='flight-search-panel-location-label']")).click();
 
+		
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//div[@class='calendar__button']/button[text()=' ОК ']")));
 		WebElement duration = driver.findElement(By.xpath("//div[@class='calendar__button']/button[text()=' ОК ']"));
