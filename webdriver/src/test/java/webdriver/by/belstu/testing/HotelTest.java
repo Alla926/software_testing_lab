@@ -14,7 +14,7 @@ public class HotelTest {
 	public void checkHotel() {
 		System.setProperty("webdriver.chrome.driver", "src/resources/driver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		driver.manage().window().maximize();
 		driver.get("http://wizzair.com/ru-ru");
 

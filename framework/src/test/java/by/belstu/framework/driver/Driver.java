@@ -9,7 +9,7 @@ public class Driver {
 	    private static WebDriver driver;
 	    private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
 	    private static final String CHROMEDRIVER_EXE_PATH = "src/resources/driver/chromedriver.exe";
-	    private static final int DEFAULT_TIMEOUT = 20; 
+	    private static final int DEFAULT_TIMEOUT = 30; 
 
 	    private Driver(){}
 

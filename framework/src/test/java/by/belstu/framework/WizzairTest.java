@@ -28,7 +28,6 @@ public class WizzairTest {
 		steps.changeLanguage("Polish");
 		Assert.assertEquals(expectedPolishTitle, steps.getMainPageTitle());
 	}
-	
 	@Test
 	public void getHotelsCityTest() {
 		steps.openMainPage();
