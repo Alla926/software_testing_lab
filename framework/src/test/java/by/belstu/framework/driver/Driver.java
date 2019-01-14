@@ -14,7 +14,7 @@ public class Driver {
 	    private Driver(){}
 
 	    public static WebDriver getDriver(){
-	        if (null == driver){
+	        if (driver == null){
 	            System.setProperty(WEBDRIVER_CHROME_DRIVER, CHROMEDRIVER_EXE_PATH);
 	            driver = new ChromeDriver();
 	            driver.manage().timeouts().pageLoadTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
