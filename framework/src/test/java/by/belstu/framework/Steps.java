@@ -80,4 +80,10 @@ public class Steps {
 		return mainPage.hasValidationException();
 	}
 	
+	public boolean tryfillFlightFormWithCityWithoutAirport(String fromCity, String toCity) {
+		MainPage mainPage = new MainPage(driver);
+		mainPage.fillFlightFormWithCityWithoutAirport(fromCity, toCity);
+		return mainPage.hasValidationException();
+	}
+	
 }

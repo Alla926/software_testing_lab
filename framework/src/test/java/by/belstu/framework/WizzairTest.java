@@ -14,7 +14,8 @@ public class WizzairTest {
 		steps = new Steps();
 		steps.openBrowser();
 	}
-	@Ignore
+
+
 	@Test
 	public void changeLanguageTest() {
 		String expectedEnglishTitle = "Official Wizz Air website | Book direct for the best prices";
@@ -62,7 +63,7 @@ public class WizzairTest {
 	@Test
 	public void getTheSameResultTest() {
 		steps.openSearchPage();
-		boolean result = steps.isTheSameResultOfTwoSearches("Вильнюс", "toCity");
+		boolean result = steps.isTheSameResultOfTwoSearches("Вильнюс", "Барселона");
 		Assert.assertEquals(result, "true"); 
 	}
 	@Ignore
@@ -78,6 +79,14 @@ public class WizzairTest {
 	public void tryToSearchFlightsWithSameFromAndToCityTest() {
 		steps.openMainPage();
 		boolean result = steps.tryToSearchFlightsWithSameFromAndToCity("Вильнюс");
+		Assert.assertEquals(result, "true"); 
+	}
+	
+	@Ignore
+	@Test
+	public void tryfillFlightFormWithCityWithoutAirpoTest() {
+		steps.openMainPage();
+		boolean result = steps.tryfillFlightFormWithCityWithoutAirport("Вильнюс", "Витебск");
 		Assert.assertEquals(result, "true"); 
 	}
 	

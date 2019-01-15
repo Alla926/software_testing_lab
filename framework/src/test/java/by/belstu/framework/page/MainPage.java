@@ -11,14 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage {
-	WebDriver driver;
-	WebDriverWait wait;
-
-	public MainPage(WebDriver driver) {
-		this.driver = driver;
-		wait = new WebDriverWait(driver, 20);
-		PageFactory.initElements(this.driver, this);
-	}
+	private final String URL = "http://wizzair.com/ru-ru";
+	private WebDriver driver;
 
 	@FindBy(id = "search-departure-station")
 	private WebElement from;
@@ -62,8 +56,13 @@ public class MainPage {
 	@FindBy(xpath = "//div[@role='heading']//h2")
 	private WebElement resultCity;
 
+	public MainPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(this.driver, this);
+	}
+	
 	public void openPage() {
-		driver.navigate().to("http://wizzair.com/ru-ru");
+		driver.navigate().to(URL);
 	}
 
 	public String getPageTitle() {
@@ -129,6 +128,14 @@ public class MainPage {
 		searchFlights.click();
 	}
 	
+	public void fillFlightFormWithCityWithoutAirport(String fromCity, String toCity) {
+		from.clear();
+		from.sendKeys(fromCity+"\n");
+		to.clear();
+		to.sendKeys(toCity+"\n");
+		searchFlights.click();
+	}
+	
 
 	public boolean isNoFlights() {
 		try {
@@ -142,7 +149,7 @@ public class MainPage {
 	
 	public boolean hasValidationException() {
 		try {
-			driver.findElement(By.xpath("//span[@class='rf-input__error__message']//span[text()='Пожалуйста, укажите пункт назначения']"));
+			driver.findElement(By.xpath("//span[@class='rf-input__error__message']"));
 			return true;
 		} catch (NoSuchElementException ignored) {
 			return false;
