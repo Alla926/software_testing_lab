@@ -1,5 +1,7 @@
 package by.belstu.framework.page;
 
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class MainPage {
 	WebDriver driver;
 	WebDriverWait wait;
+
 	public MainPage(WebDriver driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, 20);
@@ -23,8 +26,11 @@ public class MainPage {
 	@FindBy(id = "search-arrival-station")
 	private WebElement to;
 
-	@FindBy(xpath = "//div[@class='calendar__button']/button[text()=' ОК ']")
-	private WebElement duration;
+	@FindBy(xpath = "//button[@data-test='flight-search-submit']")
+	private WebElement searchFlights;
+
+	@FindBy(xpath = "//span[text()='На эту дату нет рейсов.']")
+	private WebElement noFlights;
 
 	@FindBy(xpath = "//button[@data-test='language-selector']")
 	private WebElement languageSelector;
@@ -38,44 +44,32 @@ public class MainPage {
 	@FindBy(xpath = "//*[@id='flight-search']/div/div/div[1]/div/button[2]")
 	private WebElement hotels;
 
-	@FindBy(xpath = "//*[@id='flight-search']/div/div/div[1]/div/button[3]")
-	private WebElement cars;
-
 	@FindBy(id = "b_destination")
 	private WebElement hotelCity;
 
 	@FindBy(id = "checkInDate")
 	private WebElement checkInDate;
-	
+
 	@FindBy(id = "ui-datepicker-checkInDate-2019-0-31")
 	private WebElement January31;
-	
-	@FindBy(id = "checkOutDate")
-	private WebElement checkOutDate;
-	
-	@FindBy(id = "ui-datepicker-checkOutDate-2019-1-4")
-	private WebElement February4;
-	
+
 	@FindBy(xpath = "//input[@value='Search']")
 	private WebElement hotelSearch;
-	
+
 	@FindBy(xpath = "//iframe[@src='https://www.booking.com/_46f5ca3196d9?lang=en-gb']")
 	private WebElement hotelsFrame;
-	
+
 	@FindBy(xpath = "//div[@role='heading']//h2")
 	private WebElement resultCity;
 
-	@FindBy(xpath = "//input[@placeholder=\"Pick up location\"]")
-	private WebElement carCity;
-	
-    public void openPage() {
-        driver.navigate().to("http://wizzair.com/ru-ru");
-    }
-    
-    public String getPageTitle() {
-        return driver.getTitle();
-    }
-    
+	public void openPage() {
+		driver.navigate().to("http://wizzair.com/ru-ru");
+	}
+
+	public String getPageTitle() {
+		return driver.getTitle();
+	}
+
 	public void changeLanguage(String language) {
 		languageSelector.click();
 		if (language.equals("English")) {
@@ -86,27 +80,74 @@ public class MainPage {
 			throw new IllegalArgumentException("Such language doesn't exist " + language);
 		}
 	}
-	
+
 	public void goToHotelsFrame() {
 		hotels.click();
 		driver.switchTo().frame(hotelsFrame);
 	}
-	
-	public void goToHotels() {
+
+	public void goToHotels(String city) {
 		hotelCity.clear();
-		hotelCity.sendKeys("Barcelona, Catalonia, Spain");
+		hotelCity.sendKeys(city);
 		checkInDate.click();
 		January31.click();
 		hotelSearch.click();
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle);
 		}
-		
+
 	}
+
 	public String getHotelsCity() {
 		String city = resultCity.getText();
 		city = city.split(":")[0];
 		return city;
+	}
+
+	public void fillFlightForm(String fromCity, String toCity) {
+		from.clear();
+		from.sendKeys(fromCity+"\n");
+		to.clear();
+		to.sendKeys(toCity+"\n");
+		searchFlights.click();
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
+	}
+	
+	public void fillFlightFormWithFromCity(String fromCity) {
+		from.clear();
+		from.sendKeys(fromCity+"\n");
+		searchFlights.click();
+	}
+	
+	public void fillFlightFormWithSameFromAndToCity(String city) {
+		from.clear();
+		from.sendKeys(city+"\n");
+		to.clear();
+		to.sendKeys(city+"\n");
+		searchFlights.click();
+	}
+	
+
+	public boolean isNoFlights() {
+		try {
+			driver.findElement(By.xpath("//span[text()='На эту дату нет рейсов.']"));
+			return true;
+		} catch (NoSuchElementException ignored) {
+			return false;
+		}
+
+	}
+	
+	public boolean hasValidationException() {
+		try {
+			driver.findElement(By.xpath("//span[@class='rf-input__error__message']//span[text()='Пожалуйста, укажите пункт назначения']"));
+			return true;
+		} catch (NoSuchElementException ignored) {
+			return false;
+		}
+
 	}
 
 }

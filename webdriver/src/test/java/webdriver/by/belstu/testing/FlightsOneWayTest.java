@@ -43,6 +43,9 @@ public class FlightsOneWayTest {
 		WebElement duration = driver.findElement(By.xpath("//div[@class='calendar__button']/button[text()=' ОК ']"));
 		duration.submit();
 		
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
 		wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//span[text()='На эту дату нет рейсов.']")));
 		boolean isNotCharts = driver.findElement(By.xpath("//span[text()='На эту дату нет рейсов.']")).isDisplayed();
