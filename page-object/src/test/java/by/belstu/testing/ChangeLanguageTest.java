@@ -28,9 +28,10 @@ public class ChangeLanguageTest {
 	    }
 
 	    @Test
-	    public void testInternationalization() {
+	    public void changeLanguageTest() {
 	        String expectedEnglishTitle = "Official Wizz Air website | Book direct for the best prices";
 	        String expectedPolishTitle = "Oficjalna strona Wizz Air | Rezerwuj bezpośrednio, by skorzystać z najlepszych cen";
+	        
 	        MainPage main = new MainPage(driver);
 
 
@@ -45,6 +46,5 @@ public class ChangeLanguageTest {
 	    @After
 	    public void complete() {
 	        driver.quit();
-	        driver = null;
 	    }
 }

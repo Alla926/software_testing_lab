@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPage extends AbstractPage {
+public class MainPage {
 	private final String MAIN_PAGE_URL = "http://wizzair.com/ru-ru";
-
+	WebDriver driver;
 	public MainPage(WebDriver driver) {
-		super(driver);
+		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
 	}
 
