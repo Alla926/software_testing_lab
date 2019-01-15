@@ -29,21 +29,21 @@ public class WizzairTest {
 		steps.changeLanguage("Polish");
 		Assert.assertEquals(expectedPolishTitle, steps.getMainPageTitle());
 	}
-	@Ignore
+
 	@Test
 	public void getHotelsCityTest() {
 		steps.openMainPage();
 		String city = steps.getHotelsCity("Barcelona, Catalonia, Spain");
 		Assert.assertEquals("Barcelona", city);
 	}
-	@Ignore
+
 	@Test
 	public void noFlightsTest() {
 		steps.openMainPage();
 		boolean result = steps.isNoFlights("Вильнюс", "Барселона");
 		Assert.assertEquals(result, true);
 	}
-	@Ignore
+
 	@Test
 	public void getAllFlightsTest() {
 		steps.openSearchPage();
@@ -51,7 +51,7 @@ public class WizzairTest {
 		Assert.assertEquals(cost, "99,99"); 
 	}
 	
-	@Ignore
+
 	@Test
 	public void getAllFlightsWithDiscountTest() {
 		steps.openSearchPage();
@@ -59,14 +59,14 @@ public class WizzairTest {
 		Assert.assertEquals(cost, "89,99"); 
 	}
 	
-	@Ignore
+
 	@Test
 	public void getTheSameResultTest() {
 		steps.openSearchPage();
 		boolean result = steps.isTheSameResultOfTwoSearches("Вильнюс", "Барселона");
 		Assert.assertEquals(result, "true"); 
 	}
-	@Ignore
+
 	@Test
 	public void tryToSearchFlightsOnlyFromCityTest() {
 		steps.openMainPage();
@@ -74,7 +74,7 @@ public class WizzairTest {
 		Assert.assertEquals(result, "true"); 
 	}
 	
-	@Ignore
+
 	@Test
 	public void tryToSearchFlightsWithSameFromAndToCityTest() {
 		steps.openMainPage();
@@ -82,12 +82,20 @@ public class WizzairTest {
 		Assert.assertEquals(result, "true"); 
 	}
 	
-	@Ignore
+
 	@Test
-	public void tryfillFlightFormWithCityWithoutAirpoTest() {
+	public void tryfillFlightFormWithCityWithoutAirportTest() {
 		steps.openMainPage();
 		boolean result = steps.tryfillFlightFormWithCityWithoutAirport("Вильнюс", "Витебск");
 		Assert.assertEquals(result, "true"); 
+	}
+	
+
+	@Test
+	public void compareDiscountPriceAndUsualPriceTest() {
+		steps.openSearchPage();
+		int difference  = steps.compareDiscountPriceAndUsualPrice("Вильнюс", "Барселона");
+		Assert.assertEquals(difference, 10); 
 	}
 	
 

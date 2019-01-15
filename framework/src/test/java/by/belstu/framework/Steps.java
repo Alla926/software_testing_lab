@@ -86,4 +86,15 @@ public class Steps {
 		return mainPage.hasValidationException();
 	}
 	
+	public int compareDiscountPriceAndUsualPrice(String fromCity, String toCity) {
+		SearchPage searchPage = new SearchPage(driver);
+		searchPage.fillSearchFormWithDiscount(fromCity, toCity);
+		String price1 = searchPage.getPriceOfFirstFlight();
+		searchPage = new SearchPage(driver);
+		searchPage.fillSearchForm(fromCity, toCity);
+		String price2 = searchPage.getPriceOfFirstFlight();
+		int difference = Integer.getInteger(price2)-Integer.getInteger(price1);
+		return difference;
+	}
+	
 }
